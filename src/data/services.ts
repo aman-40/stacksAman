@@ -1,124 +1,132 @@
 export interface Service {
   id: string;
   title: string;
+  slug: string;
   description: string;
   examples: string[];
+  whatYouGet: string[];
+  technologies: string[];
 }
 
 export const services: Service[] = [
   {
     id: "01",
-    title: "WEB EXPERIENCES",
-    description: "Responsive, fast and carefully structured websites designed around the brand, audience and goals.",
+    title: "Web Development",
+    slug: "web-development",
+    description: "Fast, accessible, and responsive web experiences built with modern frameworks. Focus on performance, SEO, and flawless user interactions.",
     examples: [
-      "Business websites",
-      "Portfolio websites",
-      "Landing pages",
-      "Marketing websites",
-      "Custom web experiences",
+      "Marketing Websites",
+      "Landing Pages",
+      "Corporate Sites",
+      "Interactive Web Experiences",
     ],
+    whatYouGet: [
+      "Responsive design for all devices",
+      "Technical SEO optimization",
+      "Performance optimization (Core Web Vitals)",
+      "Accessible markup (a11y)",
+      "Smooth animations and interactions"
+    ],
+    technologies: ["React", "Next.js", "Tailwind CSS", "TypeScript", "GSAP", "Framer Motion"],
   },
   {
     id: "02",
-    title: "DIGITAL PRODUCTS",
-    description: "From early concepts to working products.",
+    title: "Full-Stack Development",
+    slug: "full-stack-development",
+    description: "End-to-end digital products from database architecture to the user interface. Scalable applications built around your exact business logic.",
     examples: [
-      "SaaS products",
-      "Platforms",
-      "MVPs",
-      "Customer portals",
-      "Community platforms",
-      "Management systems",
+      "SaaS Platforms",
+      "Internal Dashboards",
+      "Customer Portals",
+      "Complex Web Applications",
     ],
+    whatYouGet: [
+      "Complete end-to-end architecture",
+      "User authentication and roles",
+      "Custom business logic implementation",
+      "State management",
+      "Secure data handling"
+    ],
+    technologies: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "TypeScript", "React"],
   },
   {
     id: "03",
-    title: "CUSTOM APPLICATIONS",
-    description: "Applications built around specific workflows and requirements.",
+    title: "Backend & APIs",
+    slug: "backend-and-apis",
+    description: "Robust, secure, and scalable backend systems to power your applications. Designed for high performance and seamless data flow.",
     examples: [
-      "Dashboards",
-      "Admin panels",
-      "Internal tools",
-      "Booking systems",
-      "Learning platforms",
-      "Data-driven applications",
+      "RESTful APIs",
+      "GraphQL APIs",
+      "Microservices",
+      "Serverless Functions",
     ],
+    whatYouGet: [
+      "Secure authentication & authorization",
+      "Scalable infrastructure design",
+      "Comprehensive API documentation",
+      "Rate limiting and security measures",
+      "High-performance endpoints"
+    ],
+    technologies: ["Node.js", "Express", "NestJS", "Python", "GraphQL", "REST"],
   },
   {
     id: "04",
-    title: "BACKEND & SYSTEMS",
-    description: "The systems behind the experience.",
+    title: "Database Solutions",
+    slug: "database-solutions",
+    description: "Efficient data modeling, secure storage, and fast retrieval. Designing database structures that scale with your application.",
     examples: [
-      "APIs",
-      "Authentication",
-      "Authorization",
-      "Business logic",
-      "Data processing",
-      "Database systems",
+      "Relational Databases (SQL)",
+      "NoSQL Databases",
+      "Data Migration",
+      "Schema Design",
     ],
+    whatYouGet: [
+      "Optimized query performance",
+      "Scalable schema design",
+      "Data security and backups",
+      "Migration strategies",
+      "Indexing and caching"
+    ],
+    technologies: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Prisma", "Drizzle ORM"],
   },
   {
     id: "05",
-    title: "INTEGRATIONS",
-    description: "Connect products with the services they need.",
+    title: "API & Third-Party Integration",
+    slug: "api-integration",
+    description: "Connecting your application with external services to extend functionality without reinventing the wheel.",
     examples: [
-      "Third-party APIs",
-      "Payments",
-      "Email",
-      "Maps",
-      "Analytics",
-      "Cloud services",
-      "AI services",
+      "Payment Gateways (Stripe)",
+      "Authentication Providers",
+      "CMS Integrations",
+      "CRM Connections",
     ],
+    whatYouGet: [
+      "Seamless data synchronization",
+      "Secure webhook handling",
+      "Error handling and retry logic",
+      "Extensible integration architecture",
+      "Automated workflows"
+    ],
+    technologies: ["Stripe API", "OAuth", "Sanity CMS", "Supabase", "Webhooks"],
   },
   {
     id: "06",
-    title: "AUTOMATION",
-    description: "Turn repetitive workflows into automated systems.",
+    title: "Optimization & Bug Fixing",
+    slug: "optimization-and-bug-fixing",
+    description: "Refactoring legacy code, resolving stubborn bugs, and drastically improving the performance of existing applications.",
     examples: [
-      "Data processing",
-      "Notifications",
-      "Scheduled workflows",
-      "API-based automation",
-      "Internal tools",
+      "Performance Audits",
+      "Code Refactoring",
+      "Architecture Upgrades",
+      "Security Patching",
     ],
-  },
-  {
-    id: "07",
-    title: "E-COMMERCE",
-    description: "Custom digital storefronts and sales workflows.",
-    examples: [
-      "Online stores",
-      "Product catalogs",
-      "Checkout",
-      "Order management",
-      "Customer systems",
+    whatYouGet: [
+      "Faster load times",
+      "Cleaner, maintainable code base",
+      "Reduced technical debt",
+      "Improved Lighthouse scores",
+      "Stable production environments"
     ],
-  },
-  {
-    id: "08",
-    title: "AI & INTELLIGENT FEATURES",
-    description: "Integrate intelligence into digital products.",
-    examples: [
-      "AI assistants",
-      "AI search",
-      "AI API integrations",
-      "Document processing",
-      "Recommendations",
-      "Intelligent automation",
-    ],
-  },
-  {
-    id: "09",
-    title: "OPTIMIZATION & MAINTENANCE",
-    description: "Enhance, scale and secure existing systems.",
-    examples: [
-      "Bug fixing",
-      "Performance optimization",
-      "Refactoring",
-      "API debugging",
-      "Feature improvements",
-      "Existing application development",
-    ],
+    technologies: ["Lighthouse", "Chrome DevTools", "TypeScript Migration", "React Profiler"],
   },
 ];

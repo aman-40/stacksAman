@@ -17,7 +17,7 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center font-medium transition-colors uppercase tracking-widest";
+  const baseStyles = "inline-flex items-center justify-center font-medium transition-colors uppercase font-mono tracking-widest";
   
   const variants = {
     primary: "bg-foreground text-background hover-water-fill hover-water-fill-accent hover:text-foreground",
@@ -28,7 +28,7 @@ export function Button({
   
   const sizes = {
     sm: "px-4 py-2 text-xs",
-    md: "px-6 py-3 text-sm",
+    md: "px-4 sm:px-6 py-3 text-sm",
     lg: "px-8 py-4 text-base",
   };
 

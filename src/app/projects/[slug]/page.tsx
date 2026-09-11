@@ -34,13 +34,13 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
     <>
       <main className="pt-40 pb-24">
         {/* HERO */}
-        <section className="px-6 mb-24">
+        <section className="px-4 sm:px-6 mb-24">
           <div className="container mx-auto">
             <Reveal direction="up">
-              <span className="text-xs font-medium tracking-widest text-accent uppercase block mb-6 border border-accent/30 inline-block px-3 py-1 rounded-full">
+              <span className="text-xs font-medium font-mono tracking-widest text-accent uppercase block mb-6 border border-accent/30 inline-block px-3 py-1 rounded-full">
                 {project.status}
               </span>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl leading-none uppercase tracking-tighter mb-12 max-w-5xl">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-none uppercase tracking-tighter mb-12 max-w-5xl">
                 {project.title}
               </h1>
             </Reveal>
@@ -53,11 +53,11 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
                   </p>
                 </div>
                 <div>
-                  <span className="block text-muted text-xs tracking-widest uppercase mb-2">ROLE</span>
+                  <span className="block text-muted text-xs font-mono tracking-widest uppercase mb-2">ROLE</span>
                   <span className="uppercase text-sm">{project.role}</span>
                 </div>
                 <div>
-                  <span className="block text-muted text-xs tracking-widest uppercase mb-2">SCOPE</span>
+                  <span className="block text-muted text-xs font-mono tracking-widest uppercase mb-2">SCOPE</span>
                   <span className="uppercase text-sm">{project.scope}</span>
                 </div>
               </div>
@@ -66,10 +66,10 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
         </section>
 
         {/* HERO IMAGE */}
-        <section className="px-6 mb-32">
+        <section className="px-4 sm:px-6 mb-32">
           <div className="container mx-auto">
             <div className="w-full aspect-video bg-border/20 flex items-center justify-center relative overflow-hidden border border-border">
-               <div className="text-muted text-sm tracking-widest uppercase bg-border/10 p-4">
+               <div className="text-muted text-sm font-mono tracking-widest uppercase bg-border/10 p-4">
                   TODO: Hero Image / Video for {project.title}
                </div>
             </div>
@@ -77,7 +77,7 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
         </section>
 
         {/* CASE STUDY CONTENT */}
-        <section className="px-6 mb-32">
+        <section className="px-4 sm:px-6 mb-32">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               
@@ -85,7 +85,7 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
               <div className="lg:col-span-4 order-2 lg:order-1 space-y-12">
                 <Reveal direction="up">
                   <div>
-                    <h3 className="text-xs tracking-widest uppercase text-muted mb-4 border-b border-border/50 pb-2">Technologies Used</h3>
+                    <h3 className="text-xs font-mono tracking-widest uppercase text-muted mb-4 border-b border-border/50 pb-2">Technologies Used</h3>
                     <ul className="space-y-2 uppercase text-sm">
                       {project.technologies.map((tech, i) => (
                         <li key={i}>{tech}</li>
@@ -96,7 +96,7 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
                 
                 <Reveal direction="up" delay={0.1}>
                   <div>
-                    <h3 className="text-xs tracking-widest uppercase text-muted mb-4 border-b border-border/50 pb-2">Key Features</h3>
+                    <h3 className="text-xs font-mono tracking-widest uppercase text-muted mb-4 border-b border-border/50 pb-2">Key Features</h3>
                     <ul className="space-y-2 uppercase text-sm">
                       {project.keyFeatures.map((feature, i) => (
                         <li key={i}>{feature}</li>
@@ -120,7 +120,7 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
               <div className="lg:col-span-8 order-1 lg:order-2 space-y-24">
                 <Reveal direction="up">
                   <div>
-                    <h2 className="text-2xl uppercase tracking-widest mb-8 text-accent">Overview</h2>
+                    <h2 className="text-2xl uppercase font-mono tracking-widest mb-8 text-accent">Overview</h2>
                     <div className="prose prose-lg max-w-none prose-p:text-foreground prose-p:text-lg prose-p:leading-relaxed">
                       <p>{project.overview}</p>
                     </div>
@@ -129,13 +129,13 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
 
                 <Reveal direction="up">
                   <div className="w-full aspect-[16/9] bg-border/20 flex items-center justify-center border border-border">
-                     <div className="text-muted text-xs tracking-widest uppercase">TODO: Secondary Image</div>
+                     <div className="text-muted text-xs font-mono tracking-widest uppercase">TODO: Secondary Image</div>
                   </div>
                 </Reveal>
 
                 <Reveal direction="up">
                   <div>
-                    <h2 className="text-2xl uppercase tracking-widest mb-8 text-accent">The Problem</h2>
+                    <h2 className="text-2xl uppercase font-mono tracking-widest mb-8 text-accent">The Problem</h2>
                     <div className="prose prose-lg max-w-none prose-p:text-foreground prose-p:text-lg prose-p:leading-relaxed">
                       <p>{project.problem}</p>
                     </div>
@@ -144,7 +144,7 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
 
                 <Reveal direction="up">
                   <div>
-                    <h2 className="text-2xl uppercase tracking-widest mb-8 text-accent">The Approach & Build</h2>
+                    <h2 className="text-2xl uppercase font-mono tracking-widest mb-8 text-accent">The Approach & Build</h2>
                     <div className="prose prose-lg max-w-none prose-p:text-foreground prose-p:text-lg prose-p:leading-relaxed space-y-6">
                       <p>{project.approach}</p>
                       <p>{project.buildDetails}</p>
@@ -154,11 +154,11 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
 
                 <Reveal direction="up">
                   <div>
-                    <h2 className="text-2xl uppercase tracking-widest mb-8 text-accent">Challenges & Learnings</h2>
+                    <h2 className="text-2xl uppercase font-mono tracking-widest mb-8 text-accent">Challenges & Learnings</h2>
                     <div className="prose prose-lg max-w-none prose-p:text-foreground prose-p:text-lg prose-p:leading-relaxed space-y-6">
-                      <p><strong className="uppercase block text-sm tracking-widest mb-2 mt-6">Challenges:</strong> {project.challenges}</p>
-                      <p><strong className="uppercase block text-sm tracking-widest mb-2 mt-6">Outcome:</strong> {project.outcome}</p>
-                      <p><strong className="uppercase block text-sm tracking-widest mb-2 mt-6">Learnings:</strong> {project.learnings}</p>
+                      <p><strong className="uppercase block text-sm font-mono tracking-widest mb-2 mt-6">Challenges:</strong> {project.challenges}</p>
+                      <p><strong className="uppercase block text-sm font-mono tracking-widest mb-2 mt-6">Outcome:</strong> {project.outcome}</p>
+                      <p><strong className="uppercase block text-sm font-mono tracking-widest mb-2 mt-6">Learnings:</strong> {project.learnings}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -169,10 +169,10 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
         </section>
 
         {/* NEXT PROJECT (Optional / Static for now) */}
-        <section className="px-6 border-t border-border py-24 bg-[#EBE2D5] text-center">
+        <section className="px-4 sm:px-6 border-t border-border py-24 bg-[#EBE2D5] text-center">
           <div className="container mx-auto">
-            <h2 className="text-sm tracking-widest text-muted uppercase mb-8">NEXT PROJECT</h2>
-            <Link href="/projects" className="text-4xl md:text-6xl uppercase tracking-tighter hover:text-accent transition-colors">
+            <h2 className="text-sm font-mono tracking-widest text-muted uppercase mb-8">NEXT PROJECT</h2>
+            <Link href="/projects" className="text-3xl sm:text-4xl md:text-6xl uppercase tracking-tighter hover:text-accent transition-colors">
               BACK TO ALL PROJECTS
             </Link>
           </div>

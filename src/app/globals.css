@@ -26,7 +26,12 @@ body {
 }
 
 /* Global Typography Styles */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -93,4 +98,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .hover-water-fill-accent::before {
   background-color: var(--color-accent);
+}
+
+/* Text Selection */
+::selection {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+::-moz-selection {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+/* Hide native scrollbar for custom Rope Scrollbar */
+html {
+  scrollbar-width: none;
+  /* Firefox */
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Edge */
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { faqs } from "@/data/faq";
-import { Button } from "@/components/ui/Button";
+import { ContactForm } from "@/components/ui/ContactForm";
 import { Reveal } from "@/components/animations/Reveal";
 import type { Metadata } from "next";
 
@@ -15,7 +15,7 @@ export default function ContactPage() {
     <>
       <main className="pt-40 pb-24">
         {/* HEADER */}
-        <section className="px-6 mb-32">
+        <section className="px-4 sm:px-6 mb-32">
           <div className="container mx-auto max-w-4xl">
             <Reveal direction="up">
               <SectionHeading subtitle="Start a Project">
@@ -31,46 +31,14 @@ export default function ContactPage() {
         </section>
 
         {/* CONTACT FORM & INFO */}
-        <section className="px-6 mb-40">
+        <section className="px-4 sm:px-6 mb-40">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
               
               {/* CONTACT FORM PLACEHOLDER */}
               <div className="order-2 lg:order-1">
                 <Reveal direction="up" delay={0.2}>
-                  <form className="space-y-12">
-                    <div className="space-y-4">
-                      <label htmlFor="name" className="block text-xs uppercase tracking-widest text-muted">NAME</label>
-                      <input 
-                        type="text" 
-                        id="name"
-                        className="w-full bg-transparent border-b border-border py-4 text-xl md:text-2xl outline-none focus:border-foreground transition-colors placeholder:text-muted/30"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    
-                    <div className="space-y-4">
-                      <label htmlFor="email" className="block text-xs uppercase tracking-widest text-muted">EMAIL</label>
-                      <input 
-                        type="email" 
-                        id="email"
-                        className="w-full bg-transparent border-b border-border py-4 text-xl md:text-2xl outline-none focus:border-foreground transition-colors placeholder:text-muted/30"
-                        placeholder="Your email address"
-                      />
-                    </div>
-
-                    <div className="space-y-4">
-                      <label htmlFor="project" className="block text-xs uppercase tracking-widest text-muted">PROJECT DETAILS</label>
-                      <textarea 
-                        id="project"
-                        rows={5}
-                        className="w-full bg-transparent border-b border-border py-4 text-xl md:text-2xl outline-none focus:border-foreground transition-colors placeholder:text-muted/30 resize-none"
-                        placeholder="Tell me about your idea, requirements, or problem..."
-                      ></textarea>
-                    </div>
-                    
-                    <Button type="submit" size="lg">SEND ENQUIRY →</Button>
-                  </form>
+                  <ContactForm />
                 </Reveal>
               </div>
 
@@ -78,27 +46,31 @@ export default function ContactPage() {
               <div className="order-1 lg:order-2 lg:pl-16 space-y-16">
                 <Reveal direction="up" delay={0.1}>
                   <div>
-                    <h3 className="text-sm tracking-widest uppercase text-muted mb-6 border-b border-border pb-4">DIRECT CONTACT</h3>
-                    <a href="mailto:#todo-email@example.com" className="text-2xl md:text-3xl hover:text-accent transition-colors hover-underline inline-block">
-                      HELLO@STACKSAMAN.IN
+                    <h3 className="text-sm font-mono tracking-widest uppercase text-muted mb-6 border-b border-border pb-4">DIRECT CONTACT</h3>
+                    <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || ""}`} className="text-[clamp(1rem,4vw,1.75rem)] hover:text-accent transition-colors hover-underline inline-block break-all uppercase">
+                      {process.env.NEXT_PUBLIC_CONTACT_EMAIL || "HELLO@STACKSAMAN.IN"}
                     </a>
                   </div>
                 </Reveal>
                 
                 <Reveal direction="up" delay={0.2}>
                   <div>
-                    <h3 className="text-sm tracking-widest uppercase text-muted mb-6 border-b border-border pb-4">SOCIALS</h3>
+                    <h3 className="text-sm font-mono tracking-widest uppercase text-muted mb-6 border-b border-border pb-4">SOCIALS</h3>
                     <ul className="space-y-4 text-xl md:text-2xl uppercase">
-                      <li><a href="#todo-github" className="hover:text-accent transition-colors">GITHUB</a></li>
-                      <li><a href="#todo-linkedin" className="hover:text-accent transition-colors">LINKEDIN</a></li>
+                      {process.env.NEXT_PUBLIC_GITHUB_URL && (
+                        <li><a href={process.env.NEXT_PUBLIC_GITHUB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">GITHUB</a></li>
+                      )}
+                      {process.env.NEXT_PUBLIC_LINKEDIN_URL && (
+                        <li><a href={process.env.NEXT_PUBLIC_LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">LINKEDIN</a></li>
+                      )}
                     </ul>
                   </div>
                 </Reveal>
                 
                 <Reveal direction="up" delay={0.3}>
                   <div>
-                     <h3 className="text-sm tracking-widest uppercase text-muted mb-6 border-b border-border pb-4">WHO I BUILD FOR</h3>
-                     <ul className="space-y-4 text-sm tracking-widest uppercase text-foreground">
+                     <h3 className="text-sm font-mono tracking-widest uppercase text-muted mb-6 border-b border-border pb-4">WHO I BUILD FOR</h3>
+                     <ul className="space-y-4 text-sm font-mono tracking-widest uppercase text-foreground">
                        <li>STARTUPS</li>
                        <li>BUSINESSES</li>
                        <li>CREATORS</li>
@@ -113,7 +85,7 @@ export default function ContactPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-32 px-6 bg-[#EBE2D5]">
+        <section className="py-32 px-4 sm:px-6 bg-[#EBE2D5]">
           <div className="container mx-auto">
             <Reveal direction="up">
               <SectionHeading subtitle="Questions" className="mb-24">
