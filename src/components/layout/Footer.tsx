@@ -50,7 +50,7 @@ export function Footer() {
         </div>
         
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border/30 text-xs font-mono tracking-widest uppercase text-muted">
-          <p>INDIA</p>
+          <p>INDIA 🇮🇳</p>
           <p>© {currentYear} STACKSAMAN</p>
         </div>
       </div>
