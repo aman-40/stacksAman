@@ -2,10 +2,11 @@ import React from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { experiences } from "@/data/experience";
 import { Reveal } from "@/components/animations/Reveal";
+import { SplitTextReveal } from "@/components/animations/SplitTextReveal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About — StacksAman",
+  title: "About — Stacks Aman",
   description: "I'm Aman, a software developer focused on building modern digital products and web applications.",
 };
 
@@ -16,32 +17,57 @@ export default function AboutPage() {
         {/* HEADER */}
         <section className="px-4 sm:px-6 mb-32">
           <div className="container mx-auto">
-            <Reveal direction="up">
-              <SectionHeading subtitle="Behind StacksAman">
-                ABOUT AMAN
-              </SectionHeading>
-            </Reveal>
+            <div className="mb-16 md:mb-24 max-w-4xl">
+              <Reveal direction="up">
+                <p className="text-muted uppercase font-mono tracking-widest text-sm mb-4">
+                  Behind Stacks Aman
+                </p>
+              </Reveal>
+              <SplitTextReveal as="h1" delay={0.2} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] uppercase">
+                BUILDING DIGITAL EXPERIENCES THAT SOLVE REAL PROBLEMS
+              </SplitTextReveal>
+            </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               <Reveal direction="up" delay={0.2}>
                 <div className="text-xl md:text-2xl text-foreground text-balance space-y-8 leading-relaxed">
                   <p>
-                    I&apos;m Aman, a software developer focused on building modern digital products and web applications.
+                    I&apos;m Aman, a software developer and the creator of Stacks Aman — an independent web development and digital solutions brand focused on creating modern websites, web applications, dashboards, and custom digital products.
                   </p>
                   <p>
-                    My journey has taken me from a Computer Science student to a Frontend Developer, into Full-Stack engineering, and gaining exposure to AI evaluation. Today, I operate as an independent builder and the force behind StackAman.
+                    With <strong>2+ years of hands-on experience building with modern web technologies</strong>, I focus on combining clean UI/UX with practical functionality to turn ideas into working digital experiences.
                   </p>
                   <p>
-                    I believe good software should feel simple. The interfaces should be intuitive, the systems should be efficient, and the architecture should serve the product&apos;s actual needs rather than follow trends.
+                    I work across the complete web development process — from interface design and frontend development to backend APIs, databases, authentication, and deployment.
+                  </p>
+                  <p>
+                    My technology stack includes <strong>React, Next.js, JavaScript, TypeScript, Tailwind CSS, GSAP, Node.js, Express.js, MongoDB, PostgreSQL, Supabase, and Firebase</strong>. I also explore AI-powered applications and modern web technologies to build products that go beyond traditional websites.
                   </p>
                 </div>
               </Reveal>
               
               <Reveal direction="up" delay={0.4}>
-                <div className="aspect-[3/4] bg-border/20 border border-border flex items-center justify-center max-w-md ml-auto w-full relative">
-                   <div className="text-muted text-sm font-mono tracking-widest uppercase bg-border/10 p-4 text-center">
-                      TODO: Professional Portrait Photo of Aman
-                   </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
+                  <div className="border-t border-border pt-4">
+                    <h4 className="text-4xl md:text-5xl text-accent tracking-tighter mb-2">2+</h4>
+                    <p className="text-sm font-mono tracking-widest uppercase mb-2">Years Building</p>
+                    <p className="text-sm text-muted text-balance">Hands-on experience learning, designing, developing, and deploying modern web projects.</p>
+                  </div>
+                  <div className="border-t border-border pt-4">
+                    <h4 className="text-4xl md:text-5xl text-accent tracking-tighter mb-2">30+</h4>
+                    <p className="text-sm font-mono tracking-widest uppercase mb-2">Projects & Exp.</p>
+                    <p className="text-sm text-muted text-balance">A growing collection of websites, dashboards, systems, and UI concepts.</p>
+                  </div>
+                  <div className="border-t border-border pt-4">
+                    <h4 className="text-4xl md:text-5xl text-accent tracking-tighter mb-2">10+</h4>
+                    <p className="text-sm font-mono tracking-widest uppercase mb-2">Technologies</p>
+                    <p className="text-sm text-muted text-balance">Experience across modern frontend, backend, database, and animations.</p>
+                  </div>
+                  <div className="border-t border-border pt-4">
+                    <h4 className="text-4xl md:text-5xl text-accent tracking-tighter mb-2">15+</h4>
+                    <p className="text-sm font-mono tracking-widest uppercase mb-2">Domains</p>
+                    <p className="text-sm text-muted text-balance">Healthcare, education, SaaS, e-commerce, finance, real estate, AI.</p>
+                  </div>
                 </div>
               </Reveal>
             </div>
@@ -111,33 +137,45 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* PRINCIPLES */}
+        {/* APPROACH */}
         <section className="py-32 px-4 sm:px-6 bg-[#EBE2D5]">
           <div className="container mx-auto">
             <Reveal direction="up">
-              <SectionHeading subtitle="Principles" className="mb-24 max-w-5xl">
-                GOOD SOFTWARE<br/>SHOULD FEEL SIMPLE.
+              <SectionHeading subtitle="My Approach" className="mb-24 max-w-5xl">
+                A GOOD DIGITAL PRODUCT NEEDS MORE THAN ATTRACTIVE VISUALS.
               </SectionHeading>
             </Reveal>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-12 mb-24">
               {[
-                { num: "01", title: "CLARITY", desc: "Simple interfaces and understandable systems." },
-                { num: "02", title: "PERFORMANCE", desc: "Fast and efficient experiences." },
-                { num: "03", title: "FOUNDATION", desc: "Architecture that can evolve with the product." },
-                { num: "04", title: "ADAPTABILITY", desc: "Technology should serve the product, not restrict it." },
-                { num: "05", title: "CRAFT", desc: "Attention to the details that make a product feel finished." }
+                { title: "USEFUL", desc: "Solving a real problem." },
+                { title: "INTUITIVE", desc: "Easy for users to understand." },
+                { title: "RESPONSIVE", desc: "Working across devices." },
+                { title: "PERFORMANT", desc: "Fast and efficient." },
+                { title: "SCALABLE", desc: "Ready to evolve with the project." },
+                { title: "PURPOSEFUL", desc: "Every feature should have a reason to exist." }
               ].map((principle, index) => (
-                <Reveal key={principle.num} direction="up" delay={index * 0.1}>
+                <Reveal key={principle.title} direction="up" delay={index * 0.1}>
                   <div className="border-t border-border pt-6">
                     <span className="text-sm font-medium font-mono tracking-widest text-accent uppercase block mb-4">
-                      {principle.num} — {principle.title}
+                      {`0${index + 1}`} — {principle.title}
                     </span>
                     <p className="text-lg text-muted text-balance">{principle.desc}</p>
                   </div>
                 </Reveal>
               ))}
             </div>
+
+            <Reveal direction="up">
+              <div className="max-w-5xl text-2xl md:text-3xl uppercase tracking-tighter leading-tight border-t border-border/30 pt-16">
+                <p className="mb-8 text-muted normal-case font-sans tracking-normal leading-relaxed text-xl md:text-2xl text-balance">
+                  From a simple landing page to a complete management platform, I approach each project with the goal of creating an experience that combines design, technology, and functionality.
+                </p>
+                <p className="text-foreground border-l-4 border-accent pl-6 py-2">
+                  Stacks Aman — Design. Develop. Deliver.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </section>
 

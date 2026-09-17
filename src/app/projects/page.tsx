@@ -1,8 +1,9 @@
 import React from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/lib/projects";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/animations/Reveal";
+import { ParallaxImage } from "@/components/animations/ParallaxImage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +11,11 @@ export const metadata: Metadata = {
   description: "Selected work including production systems, unreleased products, and self-initiated technical explorations.",
 };
 
-export default function ProjectsPage() {
+export const revalidate = 0;
+
+export default async function ProjectsPage() {
+  const projects = await getProjects();
+
   return (
     <>
       <main className="pt-40 pb-24">
@@ -41,11 +46,12 @@ export default function ProjectsPage() {
                     {/* PROJECT IMAGE (Sticky) */}
                     <div className="lg:col-span-7 relative">
                       <div className="sticky top-32 overflow-hidden aspect-[4/3] bg-background/40 border border-border/50 rounded-xl">
-                        <div className="absolute inset-0 p-6 md:p-10 flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
-                          <img 
+                        <div className="absolute inset-0 p-6 md:p-10">
+                          <ParallaxImage 
                             src={project.image} 
                             alt={project.title} 
-                            className="w-full h-full object-cover border-[0.5px] border-border/80 shadow-2xl rounded-sm"
+                            className="w-full h-full border-[0.5px] border-border/80 shadow-2xl rounded-sm"
+                            speed={10}
                           />
                         </div>
                       </div>

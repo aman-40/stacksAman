@@ -24,7 +24,7 @@ export function RopeScrollbar() {
     
     const updateScroll = () => {
       if (state.current.isDragging) return; // We handle drag manually for zero lag
-      const THUMB_HEIGHT = 48;
+      const THUMB_HEIGHT = 96;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
       const thumbY = progress * (window.innerHeight - THUMB_HEIGHT);
@@ -59,7 +59,7 @@ export function RopeScrollbar() {
 
   const handlePointerMove = (e: PointerEvent) => {
     if (!state.current.isDragging) return;
-    const THUMB_HEIGHT = 48;
+    const THUMB_HEIGHT = 96;
     const deltaY = e.clientY - state.current.startY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     const travelRange = window.innerHeight - THUMB_HEIGHT;
@@ -102,12 +102,11 @@ export function RopeScrollbar() {
         {/* The Scroller Thumb */}
         <div 
           ref={thumbRef}
-          className="absolute right-[6px] top-0 w-[6px] h-[48px] cursor-grab active:cursor-grabbing pointer-events-auto group py-1"
+          className="absolute right-[6px] top-0 w-[8px] h-[96px] cursor-grab active:cursor-grabbing pointer-events-auto group py-1"
           style={{ willChange: "transform" }}
           onPointerDown={handlePointerDown}
         >
-          {/* Pure vertical pill scroller, no borders */}
-          <div className="w-full h-full bg-foreground/80 rounded-full group-hover:bg-accent transition-colors duration-200" />
+          <div className="w-full h-full bg-accent rounded-full hover:brightness-110 transition-all duration-200" />
         </div>
       </div>
     </div>

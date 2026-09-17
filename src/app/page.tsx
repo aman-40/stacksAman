@@ -3,32 +3,57 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { services } from "@/data/services";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/lib/projects";
 import { Reveal } from "@/components/animations/Reveal";
+import { SplitTextReveal } from "@/components/animations/SplitTextReveal";
+import { ParallaxImage } from "@/components/animations/ParallaxImage";
+import { ScrollMarquee } from "@/components/animations/ScrollMarquee";
+import { HeroSearch } from "@/components/ui/HeroSearch";
+import { ProjectCarousel } from "@/components/ui/ProjectCarousel";
 
-export default function Home() {
+export const revalidate = 0; // Disable caching so new projects appear immediately
+
+export default async function Home() {
+  const projects = await getProjects();
+
   return (
     <>
       {/* SECTION 01 — HERO */}
-      <section className="pt-40 pb-24 px-4 sm:px-6 min-h-[90dvh] flex flex-col justify-center">
-        <div className="container mx-auto">
-          <Reveal delay={0.2}>
-            <h1 className="text-4xl sm:text-5xl md:text-8xl lg:text-[10rem] leading-[0.9] tracking-tighter mb-12 max-w-6xl">
-              DIGITAL PRODUCTS<br />BUILT WITH PRECISION
-            </h1>
-          </Reveal>
-          <Reveal delay={0.4}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 md:mt-24">
-              <p className="text-xl md:text-2xl text-muted max-w-lg text-balance">
-                From websites and web applications to custom digital products and intelligent systems, I build solutions around the problem — not around a predetermined technology stack.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 items-start md:justify-end">
-                <Button href="/services">EXPLORE SERVICES →</Button>
-                <Button href="/projects" variant="outline">VIEW SELECTED WORK →</Button>
+      <section className="pt-40 pb-24 px-4 sm:px-6 min-h-[90dvh] flex flex-col justify-center items-center">
+        <div className="container mx-auto flex flex-col items-center text-center max-w-4xl">
+          <SplitTextReveal as="h1" delay={0.2} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1] tracking-tighter mb-12">
+            WHAT KIND OF WEBSITE ARE YOU LOOKING FOR?
+          </SplitTextReveal>
+          <div className="w-full">
+            <Reveal delay={0.4}>
+              <div className="w-full flex justify-center">
+                <HeroSearch projects={projects} />
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
+      </section>
+
+      {/* SECTION 01.5 — MARQUEE */}
+      <section className="py-12 bg-accent text-background overflow-hidden border-y border-border/20">
+        <ScrollMarquee baseVelocity={100} className="py-4">
+          <div className="flex items-center gap-16 px-8 text-4xl md:text-6xl uppercase tracking-tighter font-medium">
+            <span>REACT</span>
+            <span className="text-xl">✦</span>
+            <span>NEXT.JS</span>
+            <span className="text-xl">✦</span>
+            <span>TYPESCRIPT</span>
+            <span className="text-xl">✦</span>
+            <span>TAILWIND CSS</span>
+            <span className="text-xl">✦</span>
+            <span>GSAP</span>
+            <span className="text-xl">✦</span>
+            <span>NODE.JS</span>
+            <span className="text-xl">✦</span>
+            <span>WEBGL</span>
+            <span className="text-xl">✦</span>
+          </div>
+        </ScrollMarquee>
       </section>
 
       {/* SECTION 02 — INTRODUCTION */}
@@ -48,6 +73,9 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      {/* SECTION 03 — PROJECT CAROUSEL */}
+      <ProjectCarousel projects={projects} />
 
       {/* SECTION 05 — SERVICES PREVIEW */}
       <section className="py-32 px-4 sm:px-6">
@@ -84,80 +112,6 @@ export default function Home() {
 
           <div className="mt-20 flex justify-center">
             <Button href="/services" variant="outline">VIEW ALL SERVICES</Button>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 08 — SELECTED WORK PREVIEW */}
-      <section className="py-32 px-4 sm:px-6 bg-[#EBE2D5]">
-        <div className="container mx-auto">
-          <SectionHeading subtitle="Selected Work">
-            RECENT<br />PROJECTS
-          </SectionHeading>
-
-          <div className="space-y-32">
-            {projects.slice(0, 2).map((project) => (
-              <Reveal key={project.id} direction="up" delay={0.1}>
-                <div className="group">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-                    <div className="lg:col-span-7 overflow-hidden aspect-[4/3] bg-background/40 border border-border/50 rounded-xl relative">
-                      <div className="absolute inset-0 p-6 md:p-10 flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover border-[0.5px] border-border/80 shadow-2xl rounded-sm"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="lg:col-span-5">
-                      <div className="flex items-center text-xs font-medium font-mono tracking-widest text-muted uppercase mb-6">
-                        <span>PROJECT / {project.category}</span>
-                        {project.links?.live && (
-                          <span className="ml-4 flex items-center gap-2">
-                            <span className="relative flex h-2 w-2">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
-                            <span className="text-[10px] text-green-600/80">LIVE</span>
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter mb-6 transition-colors group-hover:text-accent">
-                        {project.title}
-                      </h3>
-                      <p className="text-muted mb-8 text-lg text-balance">
-                        {project.shortDescription}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2 mb-10">
-                        {project.technologies.slice(0, 4).map((tech) => (
-                          <span key={tech} className="text-xs font-medium font-mono tracking-widest uppercase border border-border/50 px-3 py-1.5 rounded-full text-muted">
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 4 && (
-                          <span className="text-xs font-medium font-mono tracking-widest uppercase border border-border/50 px-3 py-1.5 rounded-full text-muted">
-                            +{project.technologies.length - 4} MORE
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="flex flex-wrap gap-4">
-                        <Button href={`/projects/${project.slug}`} variant="outline">VIEW PROJECT →</Button>
-                        {project.links?.github && (
-                          <Button href={project.links.github} variant="outline">GITHUB →</Button>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="mt-32 flex justify-center border-t border-border/30 pt-16">
-            <Button href="/projects" variant="outline">VIEW ALL PROJECTS →</Button>
           </div>
         </div>
       </section>

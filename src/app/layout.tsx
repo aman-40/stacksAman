@@ -5,6 +5,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/animations/PageTransition";
 import { RopeScrollbar } from "@/components/ui/RopeScrollbar";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { InitialPreloader } from "@/components/animations/InitialPreloader";
+import { AIChatbot } from "@/components/ui/AIChatbot";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,12 +35,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden w-full">
+        <InitialPreloader />
         <RopeScrollbar />
+        <CustomCursor />
         <Navbar />
         <PageTransition>
           <main className="flex-grow flex flex-col">{children}</main>
         </PageTransition>
         <Footer />
+        <AIChatbot />
       </body>
     </html>
   );

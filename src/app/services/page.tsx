@@ -2,29 +2,39 @@ import React from "react";
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { services } from "@/data/services";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/lib/projects";
 import { faqs } from "@/data/faq";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/animations/Reveal";
-import type { Metadata } from "next";
+import { SplitTextReveal } from "@/components/animations/SplitTextReveal";
 
-export const metadata: Metadata = {
-  title: "Services — StacksAman",
-  description: "Web development, full-stack development, and custom digital systems designed around the specific needs of your project.",
+import { ParallaxImage } from "@/components/animations/ParallaxImage";
+
+export const metadata = {
+  title: "Services & Capabilities — StacksAman",
+  description: "Web development, full-stack architecture, and interactive design services.",
 };
 
-export default function ServicesPage() {
+export const revalidate = 0;
+
+export default async function ServicesPage() {
+  const projects = await getProjects();
   return (
     <>
       <main className="pt-40 pb-24">
         {/* HERO & OVERVIEW */}
         <section className="px-4 sm:px-6 mb-32">
           <div className="container mx-auto">
-            <Reveal direction="up">
-              <SectionHeading subtitle="Capabilities">
-                SERVICES &<br/>EXPERTISE
-              </SectionHeading>
-            </Reveal>
+            <div className="mb-16 md:mb-24 max-w-4xl">
+              <Reveal direction="up">
+                <p className="text-muted uppercase font-mono tracking-widest text-sm mb-4">
+                  Capabilities
+                </p>
+              </Reveal>
+              <SplitTextReveal as="h1" delay={0.2} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] uppercase">
+                SERVICES & EXPERTISE
+              </SplitTextReveal>
+            </div>
             <Reveal direction="up" delay={0.2}>
               <p className="text-xl md:text-2xl text-muted max-w-4xl text-balance mt-8 leading-relaxed">
                 I build digital products from the ground up, focusing on clean architecture, performance, and actual business requirements. No unnecessary fluff, just robust systems designed to scale and solve real problems.
@@ -175,10 +185,11 @@ export default function ServicesPage() {
                 <Reveal key={project.id} direction="up" delay={index * 0.1}>
                   <Link href={`/projects/${project.slug}`} className="group block">
                     <div className="aspect-video bg-background/10 mb-6 flex items-center justify-center overflow-hidden border border-background/20 transition-colors group-hover:border-accent">
-                      <img 
+                      <ParallaxImage 
                         src={project.image} 
                         alt={project.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                        className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                        speed={10}
                       />
                     </div>
                     <span className="text-xs font-medium font-mono tracking-widest text-accent uppercase block mb-2">{project.status}</span>

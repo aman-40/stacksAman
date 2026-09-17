@@ -1,9 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Magnetic } from "@/components/animations/Magnetic";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
+  target?: string;
+  rel?: string;
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   children: React.ReactNode;
@@ -36,15 +39,20 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
-        {children}
-      </Link>
+      <Magnetic strength={0.2}>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        <Link href={href} className={classes} {...(props as any)}>
+          {children}
+        </Link>
+      </Magnetic>
     );
   }
 
   return (
-    <button className={classes} {...props}>
-      {children}
-    </button>
+    <Magnetic strength={0.2}>
+      <button className={classes} {...props}>
+        {children}
+      </button>
+    </Magnetic>
   );
 }

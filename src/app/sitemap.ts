@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next';
-import { projects } from '@/data/projects';
+import { getProjects } from '@/lib/projects';
 import { services } from '@/data/services';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.stacksaman.in';
 
+  const projects = await getProjects();
   const projectRoutes = projects.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
     // The data source doesn't have modification dates, so we omit lastModified as instructed.

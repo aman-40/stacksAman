@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { faqs } from "@/data/faq";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { Reveal } from "@/components/animations/Reveal";
+import { SplitTextReveal } from "@/components/animations/SplitTextReveal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,11 +18,16 @@ export default function ContactPage() {
         {/* HEADER */}
         <section className="px-4 sm:px-6 mb-32">
           <div className="container mx-auto max-w-4xl">
-            <Reveal direction="up">
-              <SectionHeading subtitle="Start a Project">
+            <div className="mb-16 md:mb-24 max-w-4xl">
+              <Reveal direction="up">
+                <p className="text-muted uppercase font-mono tracking-widest text-sm mb-4">
+                  Start a Project
+                </p>
+              </Reveal>
+              <SplitTextReveal as="h1" delay={0.2} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] uppercase">
                 LET&apos;S BUILD IT.
-              </SectionHeading>
-            </Reveal>
+              </SplitTextReveal>
+            </div>
             <Reveal direction="up" delay={0.2}>
               <p className="text-xl md:text-2xl text-muted text-balance mt-8">
                 Tell me what you&apos;re trying to create. We&apos;ll start with the problem and figure out the right way to build it.

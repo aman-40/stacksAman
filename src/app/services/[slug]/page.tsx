@@ -1,12 +1,16 @@
 import React from "react";
 import { services } from "@/data/services";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/lib/projects";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { Reveal } from "@/components/animations/Reveal";
+import { SplitTextReveal } from "@/components/animations/SplitTextReveal";
+import { ParallaxImage } from "@/components/animations/ParallaxImage";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Metadata } from "next";
+
+export const revalidate = 0; // or 3600 for hourly
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
@@ -28,6 +32,7 @@ export async function generateStaticParams() {
 export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const service = services.find((s) => s.slug === resolvedParams.slug);
+  const projects = await getProjects();
 
   if (!service) {
     notFound();
@@ -39,14 +44,16 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         {/* HERO */}
         <section className="px-4 sm:px-6 mb-24">
           <div className="container mx-auto">
-            <Reveal direction="up">
-              <Link href="/services" className="text-xs font-medium font-mono tracking-widest text-muted uppercase block mb-8 hover:text-foreground transition-colors">
-                ← BACK TO SERVICES
-              </Link>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[0.9] uppercase tracking-tighter mb-12 max-w-5xl">
-                {service.title}
-              </h1>
-            </Reveal>
+            <div className="mb-8">
+              <Reveal direction="up">
+                <Link href="/services" className="text-xs font-medium font-mono tracking-widest text-muted uppercase block hover:text-foreground transition-colors">
+                  ← BACK TO SERVICES
+                </Link>
+              </Reveal>
+            </div>
+            <SplitTextReveal as="h1" delay={0.2} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[0.9] uppercase tracking-tighter mb-12 max-w-5xl">
+              {service.title}
+            </SplitTextReveal>
             
             <Reveal direction="up" delay={0.2}>
               <div className="border-t border-border pt-12 max-w-4xl">
@@ -132,10 +139,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 <Reveal key={project.id} direction="up" delay={index * 0.1}>
                   <Link href={`/projects/${project.slug}`} className="group block">
                     <div className="aspect-[16/10] bg-background/50 mb-6 flex items-center justify-center overflow-hidden border border-border transition-colors group-hover:border-foreground">
-                      <img 
+                      <ParallaxImage 
                         src={project.image} 
                         alt={project.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover"
+                        speed={10}
                       />
                     </div>
                     <h3 className="text-2xl md:text-3xl uppercase tracking-tight mb-4 group-hover:text-accent transition-colors">{project.title}</h3>

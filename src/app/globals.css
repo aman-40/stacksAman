@@ -23,6 +23,14 @@ body {
   font-family: var(--font-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Subtle Grid Background */
+  background-image: 
+    linear-gradient(to right, color-mix(in srgb, var(--border) 30%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 30%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: top center;
+  background-attachment: fixed;
 }
 
 /* Global Typography Styles */
@@ -99,6 +107,8 @@ h6 {
 .hover-water-fill-accent::before {
   background-color: var(--color-accent);
 }
+
+
 
 /* Text Selection */
 ::selection {

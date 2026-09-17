@@ -1,14 +1,17 @@
 import React from "react";
-import { projects } from "@/data/projects";
+import { getProjectBySlug, getProjects } from "@/lib/projects";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { Reveal } from "@/components/animations/Reveal";
+import { SplitTextReveal } from "@/components/animations/SplitTextReveal";
 import type { Metadata } from "next";
+
+export const revalidate = 0; // Or standard revalidation time
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
-  const project = projects.find((p) => p.slug === resolvedParams.slug);
+  const project = await getProjectBySlug(resolvedParams.slug);
   if (!project) return { title: "Not Found" };
   return {
     title: `${project.title} — StacksAman`,
@@ -17,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export async function generateStaticParams() {
+  const projects = await getProjects();
   return projects.map((project) => ({
     slug: project.slug,
   }));
@@ -24,7 +28,7 @@ export async function generateStaticParams() {
 
 export default async function ProjectCaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const project = projects.find((p) => p.slug === resolvedParams.slug);
+  const project = await getProjectBySlug(resolvedParams.slug);
 
   if (!project) {
     notFound();
@@ -36,14 +40,16 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
         {/* HERO */}
         <section className="px-4 sm:px-6 mb-24">
           <div className="container mx-auto">
-            <Reveal direction="up">
-              <span className="text-xs font-medium font-mono tracking-widest text-accent uppercase block mb-6 border border-accent/30 inline-block px-3 py-1 rounded-full">
-                {project.status}
-              </span>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-none uppercase tracking-tighter mb-12 max-w-5xl">
-                {project.title}
-              </h1>
-            </Reveal>
+            <div className="mb-6">
+              <Reveal direction="up">
+                <span className="text-xs font-medium font-mono tracking-widest text-accent uppercase inline-block border border-accent/30 px-3 py-1 rounded-full">
+                  {project.status}
+                </span>
+              </Reveal>
+            </div>
+            <SplitTextReveal as="h1" delay={0.2} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[1.1] uppercase tracking-tighter mb-12 max-w-5xl">
+              {project.title}
+            </SplitTextReveal>
             
             <Reveal direction="up" delay={0.2}>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-border pt-12">
