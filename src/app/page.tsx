@@ -10,6 +10,7 @@ import { ParallaxImage } from "@/components/animations/ParallaxImage";
 import { ScrollMarquee } from "@/components/animations/ScrollMarquee";
 import { HeroSearch } from "@/components/ui/HeroSearch";
 import { ProjectCarousel } from "@/components/ui/ProjectCarousel";
+import { FloatingLogos } from "@/components/animations/FloatingLogos";
 
 export const revalidate = 0; // Disable caching so new projects appear immediately
 
@@ -18,9 +19,10 @@ export default async function Home() {
 
   return (
     <>
+      <FloatingLogos />
       {/* SECTION 01 — HERO */}
-      <section className="pt-40 pb-24 px-4 sm:px-6 min-h-[90dvh] flex flex-col justify-center items-center">
-        <div className="container mx-auto flex flex-col items-center text-center max-w-4xl">
+      <section className="relative overflow-hidden pt-40 pb-24 px-4 sm:px-6 min-h-[90dvh] flex flex-col justify-center items-center">
+        <div className="container mx-auto flex flex-col items-center text-center max-w-4xl relative z-10">
           <SplitTextReveal as="h1" delay={0.2} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1] tracking-tighter mb-12">
             WHAT KIND OF WEBSITE ARE YOU LOOKING FOR?
           </SplitTextReveal>
@@ -32,28 +34,6 @@ export default async function Home() {
             </Reveal>
           </div>
         </div>
-      </section>
-
-      {/* SECTION 01.5 — MARQUEE */}
-      <section className="py-12 bg-accent text-background overflow-hidden border-y border-border/20">
-        <ScrollMarquee baseVelocity={100} className="py-4">
-          <div className="flex items-center gap-16 px-8 text-4xl md:text-6xl uppercase tracking-tighter font-medium">
-            <span>REACT</span>
-            <span className="text-xl">✦</span>
-            <span>NEXT.JS</span>
-            <span className="text-xl">✦</span>
-            <span>TYPESCRIPT</span>
-            <span className="text-xl">✦</span>
-            <span>TAILWIND CSS</span>
-            <span className="text-xl">✦</span>
-            <span>GSAP</span>
-            <span className="text-xl">✦</span>
-            <span>NODE.JS</span>
-            <span className="text-xl">✦</span>
-            <span>WEBGL</span>
-            <span className="text-xl">✦</span>
-          </div>
-        </ScrollMarquee>
       </section>
 
       {/* SECTION 02 — INTRODUCTION */}
